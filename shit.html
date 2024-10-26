@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Have a Crush on Me?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f6f6f9;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            color: #333;
+        }
+        
+        h1 {
+            color: #ff6b6b;
+            font-size: 2em;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        #no-button {
+            background-color: #ff6b6b;
+            transition: transform 0.3s ease;
+        }
+
+        #yes-button {
+            background-color: #4cafef;
+        }
+    </style>
+</head>
+<body>
+    <h1>Do you have a crush on me?</h1>
+    <div class="button-container">
+        <button id="yes-button" onclick="handleYesClick()">Yes</button>
+        <button id="no-button" onclick="handleNoClick()">No</button>
+    </div>
+
+    <script>
+        let noButtonSize = 1;
+
+        function handleYesClick() {
+            // Increase the "No" button size
+            noButtonSize += 0.5;
+            document.getElementById("no-button").style.transform = `scale(${noButtonSize})`;
+
+            // Randomly position the "Yes" button
+            const yesButton = document.getElementById("yes-button");
+            const maxX = window.innerWidth - yesButton.offsetWidth;
+            const maxY = window.innerHeight - yesButton.offsetHeight;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            yesButton.style.position = "absolute";
+            yesButton.style.left = `${randomX}px`;
+            yesButton.style.top = `${randomY}px`;
+        }
+
+        function handleNoClick() {
+            alert("Great choice!");
+        }
+    </script>
+</body>
+</html>
